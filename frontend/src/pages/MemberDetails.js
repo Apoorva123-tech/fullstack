@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config';
 import './MemberDetails.css';
 
 function MemberDetails() {
@@ -12,7 +13,7 @@ function MemberDetails() {
   useEffect(() => {
     const fetchMemberDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/members/${id}`);
+        const response = await axios.get(API_ENDPOINTS.MEMBER(id));
         setMember(response.data);
         setLoading(false);
       } catch (error) {
